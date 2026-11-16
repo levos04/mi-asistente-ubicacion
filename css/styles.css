@@ -1,0 +1,40 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f4f6f8; }
+header { background: #1565c0; color: #fff; padding: .75rem 1rem;
+         display: flex; justify-content: space-between; align-items: center; }
+h1 { font-size: 1.1rem; margin: 0; }
+button { padding: .6rem 1rem; border: 0; border-radius: 8px; background: #1565c0;
+         color: #fff; cursor: pointer; margin: .25rem 0; width: 100%; }
+button:disabled { background: #9aa; cursor: not-allowed; }
+.peligro { background: #c62828; }
+.aviso { background: #fff8e1; padding: .75rem 1rem; font-size: .9rem; }
+
+/* Móvil primero: una columna */
+.layout { display: grid; grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }
+#mapa { height: 50vh; border-radius: 12px; }
+video, canvas { width: 100%; border-radius: 8px; }
+ul { list-style: none; padding: 0; max-height: 200px; overflow: auto; }
+li { display: flex; justify-content: space-between; align-items: center;
+     background: #fff; padding: .4rem .6rem; margin-bottom: .3rem; border-radius: 6px; font-size: .85rem; }
+li button { width: auto; background: transparent; }
+
+/* Tableta */
+@media (min-width: 768px) {
+  button { width: auto; margin-right: .5rem; }
+  #mapa { height: 60vh; }
+}
+/* Computadora: dos columnas */
+@media (min-width: 1024px) {
+  .layout { grid-template-columns: 380px 1fr; }
+  #mapa { height: calc(100vh - 160px); }
+}
+.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+.foto-card { margin: 0; background: #fff; border-radius: 8px; overflow: hidden;
+             box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+.foto-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.foto-card figcaption { font-size: .7rem; padding: .3rem .4rem; color: #444; }
+.foto-card .acciones { display: flex; gap: .25rem; padding: 0 .4rem .4rem; }
+.foto-card .acciones button { font-size: .75rem; padding: .35rem; margin: 0; }
+
+@media (min-width: 768px)  { .galeria { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .galeria { grid-template-columns: repeat(2, 1fr); } }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1565c0">
+  <title>Mi Asistente de Ubicación</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>📍 Mi Asistente de Ubicación</h1>
+    <button id="btnInstalar" hidden>⬇ Instalar app</button>
+  </header>
+
+  <!-- Aviso de privacidad (Paso 9) -->
+  <section id="privacidad" class="aviso">
+    <p>Esta app usa tu ubicación y cámara <strong>solo con tu permiso</strong>.
+    Los datos se guardan únicamente en tu dispositivo (IndexedDB), no se envían a ningún servidor.</p>
+    <label><input type="checkbox" id="chkConsentimiento"> Acepto el uso de mis datos</label>
+  </section>
+
+  <div id="ayudaIOS" class="aviso" hidden>
+    Para instalar en iPhone/iPad: toca <strong>Compartir</strong> (⬆) y luego
+    <strong>"Agregar a pantalla de inicio"</strong>.
+  </div>
+
+  <main class="layout">
+    <section class="panel">
+      <button id="btnUbicacion">Obtener mi ubicación</button>
+      <button id="btnCamara">Abrir cámara</button>
+      <p id="estado" role="status"></p>
+
+      <div id="zonaCamara" hidden>
+        <video id="video" autoplay playsinline></video>
+        <button id="btnFoto">📸 Tomar foto</button>
+        <button id="btnCerrarCamara">Cerrar cámara</button>
+        <canvas id="canvas" hidden></canvas>
+      </div>
+
+      <h2>Registros guardados</h2>
+      <ul id="listaRegistros"></ul>
+      <h2>Galería de fotos</h2>
+      <p id="galeriaVacia">Aún no has tomado fotos.</p>
+      <div id="galeria" class="galeria"></div>
+      <button id="btnDescargarTodas" hidden>⬇ Descargar todas las fotos</button>
+      <button id="btnBorrarTodo" class="peligro">Borrar todos mis datos</button>
+    </section>
+
+    <section class="mapa-wrap">
+      <div id="mapa"></div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/mapa.js"></script>
+  <script src="js/camara.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
